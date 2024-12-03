@@ -1,3 +1,42 @@
+// Static graph data
+const graphData = {
+    payback: {
+        labels: ["Project A", "Project B", "Project C", "Project D"],
+        data: [5, 50, 200, 535],
+        colors: ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50"]
+    },
+    forest: {
+        labels: ["Forest Cover Lost (hectares)", "Remaining Forest Cover (hectares)"],
+        data: [8194, 41806],
+        colors: ["#8BC34A", "#CDDC39"]
+    },
+    emissions: {
+        labels: ["Cars", "Planes", "Trains"],
+        data: [171, 133, 41],
+        colors: ["#FF6384", "#36A2EB", "#4CAF50"]
+    },
+    accessibility: {
+        labels: ["Year 0", "Year 5", "Year 10", "Year 15", "Year 20", "Year 25"],
+        data: [0, 10, 20, 30, 40, 48.6],
+        color: "#FF9800"
+    },
+    mobility: {
+        labels: ["Before HSR", "After HSR"],
+        data: [50, 80],
+        colors: ["#9C27B0", "#3F51B5"]
+    },
+    property: {
+        labels: ["Before Rail Project", "After Rail Project"],
+        data: [100000, 108700],
+        colors: ["#FFC107", "#00BCD4"]
+    },
+    capacity: {
+        labels: ["Before", "After"],
+        data: [100, 125],
+        colors: ["#E91E63", "#2196F3"]
+    }
+};
+
 // Check if server is running
 async function checkServer() {
     const loadingDiv = document.createElement('div');
@@ -59,34 +98,32 @@ function openTab(evt, tabName) {
 }
 
 // Helper function to create charts
-async function createChart(ctx, endpoint, chartType, customOptions = {}) {
-    try {
-        const response = await fetch(`http://localhost:5000/api/graphs/${endpoint}`);
-        const data = await response.json();
-        
-        const chartConfig = {
-            type: chartType,
-            data: {
-                labels: data.labels,
-                datasets: [{
-                    data: data.data,
-                    backgroundColor: data.colors,
-                    borderColor: data.color, // for line charts
-                    fill: false,
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                ...customOptions
-            }
-        };
-        
-        return new Chart(ctx, chartConfig);
-    } catch (error) {
-        console.error(`Error creating chart for ${endpoint}:`, error);
-        alert(`Failed to load ${endpoint} chart. Please ensure the server is running.`);
+function createChart(ctx, endpoint, chartType, customOptions = {}) {
+    const data = graphData[endpoint];
+    if (!data) {
+        console.error(`No data found for ${endpoint}`);
+        return;
     }
+
+    const chartConfig = {
+        type: chartType,
+        data: {
+            labels: data.labels,
+            datasets: [{
+                data: data.data,
+                backgroundColor: data.colors,
+                borderColor: data.color,
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            ...customOptions
+        }
+    };
+    
+    return new Chart(ctx, chartConfig);
 }
 
 // Initialize all charts
@@ -127,7 +164,7 @@ async function initializeCharts() {
             const ctx = canvas.getContext('2d');
             if (ctx) {
                 try {
-                    await createChart(ctx, chart.endpoint, chart.type, chart.options || {});
+                    createChart(ctx, chart.endpoint, chart.type, chart.options || {});
                 } catch (error) {
                     console.error(`Failed to create chart ${chart.id}:`, error);
                 }
