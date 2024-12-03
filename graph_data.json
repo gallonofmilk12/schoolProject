@@ -1,38 +1,15 @@
-
 {
-    "payback": {
-        "labels": ["Project A", "Project B", "Project C", "Project D"],
-        "data": [5, 50, 200, 535],
-        "colors": ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50"]
-    },
     "forest": {
         "labels": ["Forest Cover Lost (hectares)", "Remaining Forest Cover (hectares)"],
         "data": [8194, 41806],
-        "colors": ["#8BC34A", "#CDDC39"]
+        "colors": ["#8BC34A", "#CDDC39"],
+        "title": "Forest Cover Impact in Kodagu District"
     },
     "emissions": {
         "labels": ["Cars", "Planes", "Trains"],
         "data": [171, 133, 41],
-        "colors": ["#FF6384", "#36A2EB", "#4CAF50"]
-    },
-    "accessibility": {
-        "labels": ["Year 0", "Year 5", "Year 10", "Year 15", "Year 20", "Year 25"],
-        "data": [0, 10, 20, 30, 40, 48.6],
-        "color": "#FF9800"
-    },
-    "mobility": {
-        "labels": ["Before HSR", "After HSR"],
-        "data": [50, 80],
-        "colors": ["#9C27B0", "#3F51B5"]
-    },
-    "property": {
-        "labels": ["Before Rail Project", "After Rail Project"],
-        "data": [100000, 108700],
-        "colors": ["#FFC107", "#00BCD4"]
-    },
-    "capacity": {
-        "labels": ["Before", "After"],
-        "data": [100, 125],
-        "colors": ["#E91E63", "#2196F3"]
+        "colors": ["#FF6384", "#36A2EB", "#4CAF50"],
+        "color": "#000000",
+        "title": "Reduction in Greenhouse Gas Emissions"
     }
 }

@@ -1,80 +1,23 @@
-// Static graph data
+// Add the graphData object back into the script
 const graphData = {
-    payback: {
-        labels: ["Project A", "Project B", "Project C", "Project D"],
-        data: [5, 50, 200, 535],
-        colors: ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50"]
-    },
     forest: {
         labels: ["Forest Cover Lost (hectares)", "Remaining Forest Cover (hectares)"],
         data: [8194, 41806],
-        colors: ["#8BC34A", "#CDDC39"]
+        colors: ["#8BC34A", "#CDDC39"],
+        title: "Forest Cover Impact in Kodagu District"
     },
     emissions: {
         labels: ["Cars", "Planes", "Trains"],
         data: [171, 133, 41],
-        colors: ["#FF6384", "#36A2EB", "#4CAF50"]
-    },
-    accessibility: {
-        labels: ["Year 0", "Year 5", "Year 10", "Year 15", "Year 20", "Year 25"],
-        data: [0, 10, 20, 30, 40, 48.6],
-        color: "#FF9800"
-    },
-    mobility: {
-        labels: ["Before HSR", "After HSR"],
-        data: [50, 80],
-        colors: ["#9C27B0", "#3F51B5"]
-    },
-    property: {
-        labels: ["Before Rail Project", "After Rail Project"],
-        data: [100000, 108700],
-        colors: ["#FFC107", "#00BCD4"]
-    },
-    capacity: {
-        labels: ["Before", "After"],
-        data: [100, 125],
-        colors: ["#E91E63", "#2196F3"]
+        colors: ["#FF6384", "#36A2EB", "#4CAF50"],
+        color: "#000000",
+        title: "Reduction in Greenhouse Gas Emissions"
     }
-};
-
-// Check if server is running
-async function checkServer() {
-    const loadingDiv = document.createElement('div');
-    loadingDiv.id = 'serverCheck';
-    loadingDiv.innerHTML = 'Checking server status...';
-    document.body.prepend(loadingDiv);
-
-    try {
-        const response = await fetch('http://localhost:5000/api/graphs/payback', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-            },
-            mode: 'cors'
-        });
-        
-        if (response.ok) {
-            loadingDiv.innerHTML = 'Server is running';
-            setTimeout(() => loadingDiv.remove(), 2000);
-            return true;
-        }
-    } catch (error) {
-        loadingDiv.innerHTML = 'Server is not running. Please start the Python server with: <br>' +
-            '<code>pip install flask flask-cors</code><br>' +
-            '<code>python graphs.py</code>';
-        return false;
-    }
-    return false;
 }
 
-// Initialize application
-async function initializeApplication() {
-    const serverRunning = await checkServer();
-    if (!serverRunning) {
-        alert('Please start the Python server by running: python graphs.py');
-        return;
-    }
-    await initializeCharts();
+// Modify initializeApplication to remove the fetch call
+function initializeApplication() {
+    initializeCharts();
 }
 
 // Start the application when page loads
@@ -97,8 +40,8 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add('active');
 }
 
-// Helper function to create charts
-function createChart(ctx, endpoint, chartType, customOptions = {}) {
+// Update createChart to use the local graphData
+function createChart(ctx, endpoint, chartType, customOptions) {
     const data = graphData[endpoint];
     if (!data) {
         console.error(`No data found for ${endpoint}`);
@@ -114,11 +57,65 @@ function createChart(ctx, endpoint, chartType, customOptions = {}) {
                 backgroundColor: data.colors,
                 borderColor: data.color,
                 fill: false,
-                tension: 0.1
+                tension: 0.1,
+                borderWidth: 2,
+                hoverBorderWidth: 4,
+                hoverBackgroundColor: '#FF6384',
+                // Add animation properties
+                animation: {
+                    duration: 1500,
+                    easing: 'easeOutBounce'
+                }
             }]
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            plugins: {
+                tooltip: {
+                    enabled: true,
+                    backgroundColor: '#2c3e50',
+                    titleColor: '#ecf0f1',
+                    bodyColor: '#ecf0f1',
+                    borderColor: '#2980b9',
+                    borderWidth: 1,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += context.parsed;
+                            }
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        color: '#2c3e50',
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: data.title || 'Chart Title',
+                    font: {
+                        size: 18,
+                        weight: 'bold'
+                    },
+                    color: '#2c3e50'
+                }
+            },
             ...customOptions
         }
     };
@@ -126,36 +123,40 @@ function createChart(ctx, endpoint, chartType, customOptions = {}) {
     return new Chart(ctx, chartConfig);
 }
 
-// Initialize all charts
-async function initializeCharts() {
+// Update initializeCharts to use the local graphData
+function initializeCharts() {
     const charts = [
-        { id: 'paybackChart', type: 'bar', endpoint: 'payback', options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Emission Payback Periods for Various Rail Projects'
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: { display: true, text: 'Years' }
-                }
-            }
-        }},
         { id: 'forestChart', type: 'pie', endpoint: 'forest', options: {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Forest Cover Impact in Kodagu District (hectares)'
+                    text: graphData.forest.title
                 }
             }
         }},
-        { id: 'emissionsReductionChart', type: 'bar', endpoint: 'emissions' },
-        { id: 'accessibilityChart', type: 'line', endpoint: 'accessibility' },
-        { id: 'mobilityChart', type: 'bar', endpoint: 'mobility' },
-        { id: 'propertyValueChart', type: 'bar', endpoint: 'property' },
-        { id: 'capacityChart', type: 'bar', endpoint: 'capacity' }
+        { id: 'emissionsReductionChart', type: 'bar', endpoint: 'emissions', options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: graphData.emissions.title
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Transportation Modes"
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: "CO₂ Emissions (grams per passenger-kilometer)"
+                    },
+                    beginAtZero: true
+                }
+            }
+        }},
     ];
 
     for (const chart of charts) {

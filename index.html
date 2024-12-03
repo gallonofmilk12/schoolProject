@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Rail Infrastructure: Bridging Economic Growth and Sustainability</title>
-    <!-- Include Chart.js for interactive graphs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -23,34 +23,120 @@
         <h2>Environmental Impact</h2>
         <p>Rail infrastructure projects have both immediate and long-term environmental impacts. While construction can lead to habitat destruction, the operation of rail systems reduces greenhouse gas emissions compared to other transportation modes.</p>
 
-        <!-- Interactive Graphs -->
+        <!-- Removed the following section for Payback Chart -->
+        <!--
         <h3>Emission Payback Periods</h3>
         <canvas id="paybackChart" width="600" height="400"></canvas>
+        -->
 
         <h3>Forest Cover Loss Due to Rail Projects</h3>
         <canvas id="forestChart" width="600" height="400"></canvas>
 
         <h3>Reduction in Greenhouse Gas Emissions</h3>
         <canvas id="emissionsReductionChart" width="600" height="400"></canvas>
+
+        <!-- Removed the Forest Loss Causes infographic -->
+        <!--
+        <div class="infographic" style="background-image: url('https://via.placeholder.com/700x300'); background-size: cover;">
+            <h3>Forest Loss Causes</h3>
+            <div class="infographic-flow">
+                Land Clearance &rarr; Habitat Destruction &rarr; Biodiversity Loss
+            </div>
+        </div>
+        -->
+
+        <!-- Removed the Emission Savings infographic background image -->
+        <div class="infographic">
+            <h3>Emission Savings per Passenger-Kilometer</h3>
+            <div class="comparison-graphic">
+                <div class="comparison-item">
+                    <i class="fas fa-train"></i>
+                    <p>Trains: 41g CO₂/km</p>
+                </div>
+                <div class="comparison-item">
+                    <i class="fas fa-car"></i>
+                    <p>Cars: 171g CO₂/km</p>
+                </div>
+                <div class="comparison-item">
+                    <i class="fas fa-plane"></i>
+                    <p>Planes: 133g CO₂/km</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Icons to Highlight Key Points -->
+        <div class="icon-cards">
+            <div class="icon-card">
+                <i class="fas fa-leaf"></i>
+                <h4>Forest Conservation</h4>
+                <p>Efforts to minimize habitat destruction during rail projects.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-cloud-rain"></i>
+                <h4>Emission Reduction</h4>
+                <p>Lower greenhouse gas emissions compared to other transportation modes.</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-tree"></i>
+                <h4>Biodiversity Preservation</h4>
+                <p>Strategies to protect local wildlife and plant species.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Tab Content: Economic Growth -->
     <div id="economic" class="tab-content">
         <h2>Economic Growth</h2>
+        
+        <!-- Removed the entire case-studies section -->
+        <!--
+        <div class="case-studies">
+            <h2>Case Studies</h2>
+            
+            <div class="case-study">
+                <div class="icon-header">
+                    <i class="fas fa-train icon-large"></i>
+                    <h3>China's High-Speed Rail Network</h3>
+                </div>
+                <p>China's high-speed rail network enhanced labor mobility by connecting distant regions, helping mitigate labor misallocation (Wang, 2023). This improved productivity in urban areas while fostering regional economic resilience.</p>
+                <div class="chart-container">
+                    <canvas id="chinaLaborChart" width="600" height="400"></canvas>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="icon-header">
+                    <i class="fas fa-map-marked-alt icon-large"></i>
+                    <h3>Spain's HSR System</h3>
+                </div>
+                <p>Spain's HSR system unified fragmented markets, enabling seamless trade and regional cooperation. Over 25 years, accessibility improved by nearly 50%, contributing to equitable economic growth (Monzon, 2019).</p>
+                <div class="chart-container">
+                    <canvas id="spainAccessibilityChart" width="600" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        -->
+
         <p>Rail projects stimulate economic growth by improving connectivity, increasing job accessibility, and fostering regional integration.</p>
         
-        <!-- New Statistics Section -->
+        <!-- New Statistics Section without images -->
         <div class="statistics-container">
             <h3>Key Statistics</h3>
             <ul class="statistics-list">
                 <li>
                     <strong>Labor Mobility:</strong> China's high-speed rail system improved labor flow by connecting distant regions (Wang, 2023).
+                    <!-- Removed image -->
+                    <!-- <img src="https://via.placeholder.com/300" alt="Labor Mobility Chart" style="width: 100%; max-width: 300px; margin-top: 10px;"> -->
                 </li>
                 <li>
                     <strong>Accessibility:</strong> Spain's HSR system increased accessibility across regions by 48.6% over 25 years (Monzon, 2019).
+                    <!-- Removed image -->
+                    <!-- <img src="https://via.placeholder.com/300" alt="Accessibility Chart" style="width: 100%; max-width: 300px; margin-top: 10px;"> -->
                 </li>
                 <li>
                     <strong>Job Creation:</strong> NYC's rail improvements boosted train capacity by 25%, enabling more workers to access urban job hubs (Ullman, 2017).
+                    <!-- Removed image -->
+                    <!-- <img src="https://via.placeholder.com/300" alt="Job Creation Chart" style="width: 100%; max-width: 300px; margin-top: 10px;"> -->
                 </li>
             </ul>
         </div>
@@ -62,7 +148,8 @@
             <li>Increased job accessibility</li>
         </ul>
 
-        <!-- Interactive Graphs -->
+        <!-- Removed the following sections -->
+        <!--
         <h3>Improvement in Accessibility (Spain's HSR System)</h3>
         <canvas id="accessibilityChart" width="600" height="400"></canvas>
 
@@ -74,26 +161,91 @@
 
         <h3>Increase in Property Values</h3>
         <canvas id="propertyChartEco" width="600" height="400"></canvas>
+
+        <div class="chart-container">
+            <h3>Job Creation Impact</h3>
+            <canvas id="jobCreationChart" width="600" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Accessibility Improvement Trend</h3>
+            <canvas id="accessibilityTrendChart" width="600" height="400"></canvas>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Labor Mobility Impact</h3>
+            <canvas id="laborMobilityChart" width="600" height="400"></canvas>
+        </div>
+        -->
+
+        <!-- Add icon cards for key statistics -->
+        <div class="icon-cards">
+            <div class="icon-card">
+                <i class="fas fa-walking"></i>
+                <h4>Labor Mobility</h4>
+                <p>Labor mobility improvement due to China's HSR system</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-project-diagram"></i>
+                <h4>Accessibility</h4>
+                <p>Accessibility growth driven by Spain's rail projects</p>
+            </div>
+            <div class="icon-card">
+                <i class="fas fa-building"></i>
+                <h4>Job Creation</h4>
+                <p>Job creation benefits of NYC's rail capacity expansion</p>
+            </div>
+        </div>
     </div>
 
     <!-- Tab Content: Social Equity -->
     <div id="social" class="tab-content">
         <h2>Social Equity</h2>
-        <p>Rail infrastructure enhances social equity by connecting marginalized communities to economic hubs and essential services.</p>
+        
+        <!-- New Detailed Statistics Section -->
+        <div class="statistics-container social-stats">
+            <h3><i class="fas fa-chart-line"></i> Key Social Impact Statistics</h3>
+            <ul class="statistics-list">
+                <li>
+                    <strong>Improved Accessibility:</strong> Spain's HSR system enhanced regional equity by increasing accessibility by 48.6% over 25 years. This improvement has significantly reduced regional disparities and improved access to opportunities.
+                </li>
+                <li>
+                    <strong>Boosted Property Values:</strong> Melbourne's Mernda Rail Extension raised property values by 8.7%, benefiting local communities and creating wealth opportunities for residents in previously underserved areas.
+                </li>
+                <li>
+                    <strong>Connected Marginalized Communities:</strong> Rail systems connect underserved populations to essential services like jobs and healthcare, reducing social inequalities and improving quality of life.
+                </li>
+            </ul>
+        </div>
+
+        <p>Rail infrastructure significantly enhances social equity by connecting marginalized communities to economic hubs and essential services, fostering inclusive growth and opportunities for all.</p>
         <p>Key benefits include:</p>
-        <ul>
-            <li>Improved access to jobs and education</li>
-            <li>Increased property values in underserved areas</li>
-            <li>Enhanced mobility for all community members</li>
+        <ul class="icon-list">
+            <li>
+                <i class="fas fa-route"></i> <!-- Accessibility Icon -->
+                Enhanced access to employment and educational opportunities
+                <span class="caption">Accessibility Growth: Regions connected by Spain’s HSR saw equity improvements by up to 48.6%.</span>
+            </li>
+            <li>
+                <i class="fas fa-home"></i> <!-- Property Values Icon -->
+                Increased property values in underserved areas
+                <span class="caption">Increased Property Values: Rail projects boosted property values in Melbourne by 8.7%.</span>
+            </li>
+            <li>
+                <i class="fas fa-link"></i> <!-- Connectivity Icon -->
+                Strengthened connectivity for all community members
+                <span class="caption">Connectivity: Rail systems link marginalized communities to economic hubs.</span>
+            </li>
         </ul>
 
-        <!-- Replace Property Value Increase Graph -->
+        <!-- Removed Property Value Increase Graph -->
+        <!--
         <h3>Property Value Changes Before and After Rail Projects</h3>
-        <canvas id="propertyValueChart" width="600" height="400"></canvas>
+        <canvas id="propertyValueChartSocial" width="600" height="400"></canvas>
 
-        <!-- Update Accessibility Improvement Graph -->
         <h3>Accessibility Improvement Over Time</h3>
         <canvas id="accessibilitySocialChart" width="600" height="400"></canvas>
+        -->
 
         <!-- New Infographic for Job Access and Education -->
         <div class="infographic">
@@ -106,6 +258,30 @@
             <h3>Reduced Regional Disparities</h3>
             <p>Spain's High-Speed Rail (HSR) system has significantly reduced regional disparities by improving territorial cohesion and accessibility nationwide. This has fostered a more balanced economic development across various regions.</p>
         </div>
+
+        <!-- Removed the entire case-studies section -->
+        <!--
+        <div class="case-studies">
+            <h2>Case Studies</h2>
+
+            <div class="case-study">
+                <h3><i class="fas fa-train"></i> Spain's High-Speed Rail System</h3>
+                <p>The High-Speed Rail (HSR) system in Spain significantly reduced regional disparities. Over 25 years, accessibility increased by 48.6%, fostering equity across previously isolated regions (Monzon, 2019).</p>
+                <div class="chart-container">
+                    <canvas id="spainAccessibilitySocialChart" width="600" height="400"></canvas>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <h3><i class="fas fa-subway"></i> Melbourne's Mernda Rail Extension</h3>
+                <p>Melbourne’s Mernda Rail Extension project demonstrated measurable economic and social equity improvements. Property values in nearby communities rose by 8.7%, showcasing how well-planned rail projects can uplift local economies (Zhang and Shukla, 2023).</p>
+                <div class="chart-container">
+                    <canvas id="melbournePropertyChart" width="600" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        -->
+
     </div>
 
     <!-- Multiple Choice Quiz -->
@@ -137,6 +313,5 @@
     </div>
 
     <script src="scripts.js"></script>
-
 </body>
 </html>
