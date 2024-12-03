@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rail Infrastructure: Bridging Economic Growth and Sustainability</title>
+    <!-- Include Chart.js for interactive graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Rail Infrastructure: Bridging Economic Growth and Sustainability</h1>
+
+    <!-- Tabs for Different Sections -->
+    <div class="tabs">
+        <button class="tablink active" onclick="openTab(event, 'environment')">Environmental Impact</button>
+        <button class="tablink" onclick="openTab(event, 'economic')">Economic Growth</button>
+        <button class="tablink" onclick="openTab(event, 'social')">Social Equity</button>
+    </div>
+
+    <!-- Tab Content: Environmental Impact -->
+    <div id="environment" class="tab-content active">
+        <h2>Environmental Impact</h2>
+        <p>Rail infrastructure projects have both immediate and long-term environmental impacts. While construction can lead to habitat destruction, the operation of rail systems reduces greenhouse gas emissions compared to other transportation modes.</p>
+
+        <!-- Interactive Graphs -->
+        <h3>Emission Payback Periods</h3>
+        <canvas id="paybackChart" width="600" height="400"></canvas>
+
+        <h3>Forest Cover Loss Due to Rail Projects</h3>
+        <canvas id="forestChart" width="600" height="400"></canvas>
+
+        <h3>Reduction in Greenhouse Gas Emissions</h3>
+        <canvas id="emissionsReductionChart" width="600" height="400"></canvas>
+    </div>
+
+    <!-- Tab Content: Economic Growth -->
+    <div id="economic" class="tab-content">
+        <h2>Economic Growth</h2>
+        <p>Rail projects stimulate economic growth by improving connectivity, increasing job accessibility, and fostering regional integration.</p>
+        
+        <!-- New Statistics Section -->
+        <div class="statistics-container">
+            <h3>Key Statistics</h3>
+            <ul class="statistics-list">
+                <li>
+                    <strong>Labor Mobility:</strong> China's high-speed rail system improved labor flow by connecting distant regions (Wang, 2023).
+                </li>
+                <li>
+                    <strong>Accessibility:</strong> Spain's HSR system increased accessibility across regions by 48.6% over 25 years (Monzon, 2019).
+                </li>
+                <li>
+                    <strong>Job Creation:</strong> NYC's rail improvements boosted train capacity by 25%, enabling more workers to access urban job hubs (Ullman, 2017).
+                </li>
+            </ul>
+        </div>
+
+        <p>Key benefits include:</p>
+        <ul>
+            <li>Enhanced regional integration</li>
+            <li>Improved labor mobility</li>
+            <li>Increased job accessibility</li>
+        </ul>
+
+        <!-- Interactive Graphs -->
+        <h3>Improvement in Accessibility (Spain's HSR System)</h3>
+        <canvas id="accessibilityChart" width="600" height="400"></canvas>
+
+        <h3>Labor Mobility Enhancement in China</h3>
+        <canvas id="mobilityChart" width="600" height="400"></canvas>
+
+        <h3>Economic Integration in the EU</h3>
+        <canvas id="economicIntegrationChart" width="600" height="400"></canvas>
+
+        <h3>Increase in Property Values</h3>
+        <canvas id="propertyChartEco" width="600" height="400"></canvas>
+    </div>
+
+    <!-- Tab Content: Social Equity -->
+    <div id="social" class="tab-content">
+        <h2>Social Equity</h2>
+        <p>Rail infrastructure enhances social equity by connecting marginalized communities to economic hubs and essential services.</p>
+        <p>Key benefits include:</p>
+        <ul>
+            <li>Improved access to jobs and education</li>
+            <li>Increased property values in underserved areas</li>
+            <li>Enhanced mobility for all community members</li>
+        </ul>
+
+        <!-- Replace Property Value Increase Graph -->
+        <h3>Property Value Changes Before and After Rail Projects</h3>
+        <canvas id="propertyValueChart" width="600" height="400"></canvas>
+
+        <!-- Update Accessibility Improvement Graph -->
+        <h3>Accessibility Improvement Over Time</h3>
+        <canvas id="accessibilitySocialChart" width="600" height="400"></canvas>
+
+        <!-- New Infographic for Job Access and Education -->
+        <div class="infographic">
+            <h3>Improved Access to Essential Services</h3>
+            <p>Rail systems connect underserved populations to education, jobs, and healthcare facilities, increasing accessibility by up to <strong>45%</strong>.</p>
+        </div>
+
+        <!-- Infographic for Reduced Regional Disparities -->
+        <div class="infographic">
+            <h3>Reduced Regional Disparities</h3>
+            <p>Spain's High-Speed Rail (HSR) system has significantly reduced regional disparities by improving territorial cohesion and accessibility nationwide. This has fostered a more balanced economic development across various regions.</p>
+        </div>
+    </div>
+
+    <!-- Multiple Choice Quiz -->
+    <div class="section quiz" id="quiz-section">
+        <h2>Test Your Knowledge</h2>
+        <form id="quizForm">
+            <div>
+                <h3>1. According to Olugbenga (2019), what is the range of payback periods to offset construction emissions for rail projects?</h3>
+                <input type="radio" name="q1" value="a"> a) 1 to 10 years<br>
+                <input type="radio" name="q1" value="b"> b) 5 to 535 years<br>
+                <input type="radio" name="q1" value="c"> c) 100 to 200 years<br>
+            </div>
+            <div>
+                <h3>2. What was the percentage improvement in accessibility due to Spain's HSR system over 25 years?</h3>
+                <input type="radio" name="q2" value="a"> a) 25%<br>
+                <input type="radio" name="q2" value="b"> b) 48.6%<br>
+                <input type="radio" name="q2" value="c"> c) 75%<br>
+            </div>
+            <div>
+                <h3>3. How much did property values increase after Melbourne's Mernda Rail Extension?</h3>
+                <input type="radio" name="q3" value="a"> a) 5%<br>
+                <input type="radio" name="q3" value="b"> b) 8.7%<br>
+                <input type="radio" name="q3" value="c"> c) 15%<br>
+            </div>
+            <button type="button" onclick="checkQuiz()">Submit Answers</button>
+        </form>
+        <div class="result" id="quizResult"></div>
+        <div id="explanations"></div>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>
