@@ -1,4 +1,3 @@
-// Add the graphData object back into the script
 const graphData = {
     forest: {
         labels: ["Forest Cover Lost (hectares)", "Remaining Forest Cover (hectares)"],
@@ -15,15 +14,12 @@ const graphData = {
     }
 }
 
-// Modify initializeApplication to remove the fetch call
 function initializeApplication() {
     initializeCharts();
 }
 
-// Start the application when page loads
 document.addEventListener('DOMContentLoaded', initializeApplication);
 
-// Tab Functionality
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName('tab-content');
@@ -40,7 +36,6 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add('active');
 }
 
-// Update createChart to use the local graphData
 function createChart(ctx, endpoint, chartType, customOptions) {
     const data = graphData[endpoint];
     if (!data) {
@@ -61,7 +56,6 @@ function createChart(ctx, endpoint, chartType, customOptions) {
                 borderWidth: 2,
                 hoverBorderWidth: 4,
                 hoverBackgroundColor: '#FF6384',
-                // Add animation properties
                 animation: {
                     duration: 1500,
                     easing: 'easeOutBounce'
@@ -123,7 +117,6 @@ function createChart(ctx, endpoint, chartType, customOptions) {
     return new Chart(ctx, chartConfig);
 }
 
-// Update initializeCharts to use the local graphData
 function initializeCharts() {
     const charts = [
         { id: 'forestChart', type: 'pie', endpoint: 'forest', options: {
@@ -174,14 +167,12 @@ function initializeCharts() {
     }
 }
 
-// Quiz Functionality with Explanations
 function checkQuiz() {
     const quizForm = document.getElementById('quizForm');
     const quizResult = document.getElementById('quizResult');
     const explanationsDiv = document.getElementById('explanations');
     let score = 0;
 
-    // Correct Answers and Explanations
     const answers = {
         q1: {
             answer: 'b',
@@ -197,15 +188,13 @@ function checkQuiz() {
         }
     };
 
-    // Check Answers
     const formData = new FormData(quizForm);
     explanationsDiv.innerHTML = '';
     for (let [question, userAnswer] of formData.entries()) {
         if (userAnswer === answers[question].answer) {
             score++;
         }
-        // Display Explanation
-        if (userAnswer) { // Only show explanation if an answer was selected
+        if (userAnswer) {
             const explanationDiv = document.createElement('div');
             explanationDiv.className = 'explanation';
             explanationDiv.innerHTML = `<strong>Question ${question.slice(1)} Explanation:</strong> ${answers[question].explanation}`;
@@ -213,6 +202,5 @@ function checkQuiz() {
         }
     }
 
-    // Display Result
     quizResult.textContent = `You scored ${score} out of 3.`;
 }
