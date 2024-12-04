@@ -14,8 +14,26 @@ const graphData = {
     }
 }
 
-function initializeApplication() {
-    initializeCharts();
+async function fetchGraphData() {
+    try {
+        const response = await fetch('graph_data.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Failed to fetch graph data:', error);
+        return null;
+    }
+}
+
+async function initializeApplication() {
+    const data = await fetchGraphData();
+    if (data) {
+        Object.assign(graphData, data);
+        initializeCharts();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initializeApplication);

@@ -3,6 +3,7 @@
         "labels": ["Forest Cover Lost (hectares)", "Remaining Forest Cover (hectares)"],
         "data": [8194, 41806],
         "colors": ["#8BC34A", "#CDDC39"],
+        "color": "#000000",
         "title": "Forest Cover Impact in Kodagu District"
     },
     "emissions": {
